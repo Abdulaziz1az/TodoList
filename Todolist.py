@@ -37,12 +37,3 @@ class ToDoList:
         for i, task in enumerate(self.tasks):
             status = 'Done' if task['done'] else 'Pending'
             print(f'{i}. {task["task"]} [{status}]')
-todo = ToDoList()
-todo.add_task("complete TODO list")
-todo.add_task("Python project")
-todo.show_tasks()
-todo.mark_done(0)
-todo.remove_task(1)
-todo.show_tasks()
-todo.undo_remove()
-todo.show_tasks()
