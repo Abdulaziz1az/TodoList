@@ -10,8 +10,9 @@ def main():
         print("4. Undo Remove")
         print("5. Show Task")
         print("6. Exit")
+        print("7. Export Tasks to File")
         
-        choice = input("Enter your choice (1-6): ")
+        choice = input("Enter your choice (1-7): ")
         
         if choice == '1':
             task = input("Enter the task: ")
@@ -37,8 +38,11 @@ def main():
             print("Exiting the To-Do List program. Goodbye!")
             break
             
+        elif choice == '7':
+            todo.export_tasks()
+            
         else:
-            print("Invalid choice. Please enter a number between 1 and 6.")
+            print("Invalid choice. Please enter a number between 1 and 7.")
             
 if  __name__ =="__main__":
     main()
