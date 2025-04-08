@@ -8,8 +8,13 @@ class ToDoList:
         self.load_tasks()
         
     def add_task(self, task):
-        self.tasks.append({'task': task, 'done': False})
-        print(f'Task added: {task}')
+        """Adds a new task to the list"""
+        if task.strip():
+            self.tasks.append({'task': task, 'done': False})
+            print(f'Task added: {task}')
+            print(f'Task added: {task}')
+        else:
+            print("Error: Task cannot be empty.")
     
     def save_tasks(self):
         try:
@@ -33,6 +38,7 @@ class ToDoList:
         if 0 <= index < len(self.tasks):
             remove_task = self.tasks.pop(index)
             self.history.append(remove_task)
+            self.save_tasks()
             print(f'Task removed: {remove_task["task"]}')
         
         else:
@@ -41,17 +47,19 @@ class ToDoList:
     def mark_done(self, index):
         if 0 <= index < len(self.tasks):
             self.tasks[index]['done'] = True
+            self.save_tasks()
             print(f'Task marked as done: {self.tasks[index]["task"]}')
         else:
-            print("Invalid index")
+            print("Error: Invalid index")
     
     def undo_remove(self):
         if self.history:
             restored_task = self.history.pop()
             self.tasks.append(restored_task)
+            self.save_tasks()
             print(f'Task restored: { restored_task["task"]}')
         else:
-            print("No tasks to restore")
+            print("Error: No tasks to restore")
         
     def show_tasks(self):
         if not self.tasks:
@@ -79,3 +87,6 @@ class ToDoList:
         self.history.clear()
         self.save_tasks()
         print("All tasks have been cleard.")
+        
+    def is_valid_index(self, index):
+        return 0 <= index < len(self.tasks)

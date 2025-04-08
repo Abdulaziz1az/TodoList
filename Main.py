@@ -13,7 +13,7 @@ def main():
         print("7. Clear All Tasks")
         print("8. Exit")
         
-        choice = input("Enter your choice (1-7): ")
+        choice = input("Enter your choice (1-8): ")
         
         if choice == '1':
             task = input("Enter the task: ")
